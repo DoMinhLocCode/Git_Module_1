@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="data"> </h1>
+    <!-- id: là thuộc tính của HTML đánh dấu giá trị riêng biệt cho các thẻ như CCCD của mỗi người -->
+
+    <input type="text" id="du_lieu" placeholder="Tên của bạn" oninput="">
+    <button onclick="nhapTen()">Nhập</button>
+    <h1 id="hien_thi"></h1>
+
+
+
+<script>
+    
+    // --------------------------------------------------------------------------------------
+    // Dữ liệu ở trong javascript gom chung trong "biến" (variable)
+    // Biến: là tên gọi của 1 vùng nhớ dữ liệu
+     // ------------------------------------- Sử dụng biến -------------------------------------------------
+
+    // let name ="Milo"; // Chuỗi
+    // let a = 1 + 2; // 3
+
+     // ----------------------------------- Xuất dữ liệu trong javascript ---------------------------------------------------
+    // Các cách xuất dữ liệu, hiển thị được dữ liệu
+
+    // alert(a); // Sẽ hiển thị dữ liệu trên hộp thoại
+
+    // console.log(a);
+    // Hiển thị ở Inspect (F12) - devtool => Console, thường dùng với dev để kiểm tra các giá trị, lỗi (bug)
+
+    // document.write(a);
+    // Sẽ hiện thị trực tiếp trên website
+
+    // Mục tiêu: hiển thị name vào trong thẻ h1 của HTML
+    // Hiển thị thông qua Id thẻ
+    // Cách thứ 4 này sẽ khó nhất
+    // document.getElementById('data').innerHTML = name;
+
+    // ------------------------------------- Nhập dữ liệu trong javascript -------------------------------------------------
+    // cách 1:
+    // let name = prompt('Nhập vào đây đi');
+    // Hiển thị 1 hộp thoại cho người dùng nhập dữ liệu
+    // document.write(name);
+
+    // cách 2:
+    function nhapten() { // cú pháp tạo tính năng (function) custiom (tự tạo)
+        let name = document.getElementById('du_lieu').value; // name sẽ hứng giá trị ô input có id: du_lieu
+        document.getElementById('hien_thi').innerHTML = name; // hiển thị tên thẻ có Id: hien_thi
+    }
+
+
+    </script>
+</body>
+</html>

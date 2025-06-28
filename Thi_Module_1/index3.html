@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu 3</title>
+ 
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #efa7a7;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .title-box {
+            max-width: 600px;
+            background-color: #ffffff;
+            color: #2c3e50;
+            margin: 0 auto 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .button-group {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #c19734;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #bangHienThi {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e1f5fe;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-box">
+        <h2>💼 Quản lý sổ tiết kiệm</h2>
+    </div>
+
+    <div class="button-group">
+        <button onclick="themSoTietKiem()">➕ Thêm sổ</button>
+        <button onclick="xoaSoTietKiem()">❌ Xóa sổ</button>
+        <button onclick="hienThiDanhSach()">📄 Hiển thị danh sách</button>
+    </div>
+
+    <div id="bangHienThi"></div>
+
+
+    <Script>
+        class SoTietKiem {
+            constructor(maSo, loai, hoTen, cmnd, ngayMo, soTien) {
+                this.maSo = maSo;
+                this.loai = loai;
+                this.hoTen = hoTen;
+                this.cmnd = cmnd;
+                this.ngayMo = ngayMo;
+                this.soTien = soTien;
+            }
+        }
+
+        let danhSachSoTietKiem = [];
+
+        function isValidSoTietKiem(maSo, loai, hoTen, cmnd, ngayMo, soTien) {
+            if (maSo.length > 5 || loai.length > 10 || hoTen.length > 30) {
+                alert("Lỗi: độ dài mã, loại hoặc họ tên vượt quá giới hạn.");
+                return false;
+            }
+            if (isNaN(cmnd) || isNaN(soTien)) {
+                alert("CMND và số tiền phải là số.");
+                return false;
+            }
+            if (!/^\d{2}\/\d{2}\/\d{4}$/.test(ngayMo)) {
+                alert("Ngày mở phải đúng định dạng dd/mm/yyyy (ví dụ: 27/12/2000).");
+                return false;
+            }
+
+            return true;
+        }
+
+        function themSoTietKiem() {
+            let maSo = prompt("Nhập mã sổ (tối đa 5 ký tự):");
+            let loai = prompt("Nhập loại tiết kiệm (tối đa 10 ký tự):");
+            let hoTen = prompt("Nhập họ tên khách hàng (tối đa 30 ký tự):");
+            let cmnd = prompt("Nhập số CMND:");
+            let ngayMo = prompt("Nhập ngày mở (dd/mm/yyyy):");
+            let soTien = prompt("Nhập số tiền gửi:");
+
+            let trung = danhSachSoTietKiem.find(item => item.maSo === maSo);
+            if (trung) {
+                alert("❗ Mã sổ đã tồn tại. Vui lòng nhập lại.");
+                return;
+            }
+
+            if (!isValidSoTietKiem(maSo, loai, hoTen, cmnd, ngayMo, soTien)) return;
+
+            let soMoi = new SoTietKiem(maSo, loai, hoTen, parseInt(cmnd), ngayMo, parseFloat(soTien));
+            danhSachSoTietKiem.push(soMoi);
+
+            alert("✅ Thêm sổ tiết kiệm thành công!");
+            hienThiDanhSach();
+        }
+
+        function xoaSoTietKiem() {
+            let maCanXoa = prompt("Nhập mã sổ bạn muốn xóa:");
+            let index = danhSachSoTietKiem.findIndex(item => item.maSo === maCanXoa);
+
+            if (index === -1) {
+                alert("❗ Mã sổ không tồn tại. Vui lòng nhập lại.");
+                return;
+            }
+
+            let xacNhan = confirm("Bạn có chắc chắn muốn xóa sổ này không?");
+            if (xacNhan) {
+                danhSachSoTietKiem.splice(index, 1);
+                alert("✅ Đã xóa thành công.");
+                hienThiDanhSach();
+            }
+        }
+
+        function hienThiDanhSach() {
+            let html = "<h3>📄 Danh sách sổ tiết kiệm:</h3>";
+            if (danhSachSoTietKiem.length === 0) {
+                html += "<p>Không có sổ nào trong danh sách.</p>";
+            } else {
+                html += "<table><tr><th>Mã</th><th>Loại</th><th>Họ tên</th><th>CMND</th><th>Ngày mở</th><th>Số tiền</th></tr>";
+                for (let s of danhSachSoTietKiem) {
+                    html += `<tr>
+                        <td>${s.maSo}</td>
+                        <td>${s.loai}</td>
+                        <td>${s.hoTen}</td>
+                        <td>${s.cmnd}</td>
+                        <td>${s.ngayMo}</td>
+                        <td>${s.soTien}</td>
+                    </tr>`;
+                }
+                html += "</table>";
+            }
+            document.getElementById("bangHienThi").innerHTML = html;
+        }
+    </Script>
+</body>
+</html>

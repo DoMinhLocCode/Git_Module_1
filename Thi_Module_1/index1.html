@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu 1</title>
+</head>
+<body>
+    <script>
+    function checknumber(num){
+        if (num < 2) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++){
+        if (num % i === 0); 
+        return false;
+    }
+    return true;
+    }
+
+    function processArray(){
+    let n = parseInt(prompt("Nhập số lượng phần tử (n <= 50):"));
+    if (isNaN(n) || n <= 0 || n > 50){
+        alert("Số lượng phần tử phải nằm trong khoảng từ 1 đến 50!");
+        return;
+    }
+
+    let a = [];
+    for (let i = 0; i < n; i++){
+        let value = parseInt(prompt(`Nhập phần tử thứ ${i + 1}:`));
+        a.push(value);
+    }
+
+    let b = a.filter(checknumber);
+
+    console.log("Mảng a:", a);
+    console.log("Mảng b (Số nguyên tố):", b);
+    document.write("Mảng a: " + a.join(", ") + "<br>");
+    document.write("Mảng b (số nguyên tố): " + b.join(", "));
+}
+
+processArray();
+
+    </script>
+</body>
+</html>

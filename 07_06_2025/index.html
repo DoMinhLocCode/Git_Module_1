@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Lập trình hướng đối tượng (OPP) - Thực hành</title>
+</head>
+<body>
+    <Script> 
+
+        class Rectangle { 
+            chieu_dai ;
+            chieu_rong;
+
+                constructor (chieu_dai, chieu_rong) {
+                        console.log("Đây là constructor");
+                    this.chieu_dai = chieu_daiInput;
+                    this.chieu_rong = chieu_rongInput;
+                }
+            tinh_dien_tich () {
+                let tinh_dien_tich = (chieu_dai * chieu_rong);
+                    console.log(this.tinh_dien_tich);
+            }    
+            tinh_chu_vi () {
+                let tinh_chu_vi = (chieu_dai * chieu_rong) / 2;
+                    console.log(this.chieu_rong + tinh_chu_vi);
+            }
+
+                 s = new Rectangle (chieu_dai, chieu_rong, tinh_dien_tich, tinh_chu_vi);
+                   
+
+        }
+    </Script>
+
+</body>
+</html>

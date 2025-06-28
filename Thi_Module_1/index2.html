@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu 2</title>
+</head>
+<body>
+    <Script>
+        function Sosanhphanso(a, b, c, d){
+    if (a * d === b * c){
+        return true;
+    } 
+    else{
+        return false;
+    }
+}
+    var a = parseInt(prompt("Nhập một số là tử số phân số thứ nhất:"));
+    var b = parseInt(prompt("Nhập một số là mẫu số phân số thứ nhất:"));
+    var c = parseInt(prompt("Nhập một số là tử số phân số thứ hai:"));
+    var d = parseInt(prompt("Nhập một số là mẫu số phân số thứ hai:"));
+
+    if (b === 0 || d === 0){
+        alert("Mẫu số không được bằng 0.");
+} 
+    else{
+        var ketQua = Sosanhphanso(a, b, c, d);
+        
+    document.write("- Phân số thứ nhất: " + a + "/" + b + "<br>");
+    document.write("- Phân số thứ hai: " + c + "/" + d + "<br>");
+
+    if (ketQua === true){
+            document.write("==> Hai phân số bằng nhau.");
+    } 
+    else{
+    document.write("==> Hai phân số không bằng nhau.");
+    }
+}
+
+    </Script>
+</body>
+</html>

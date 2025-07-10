@@ -9,17 +9,17 @@ public class Tu_On_Tap_Arry {
             // myArr[1] = 40;
             //     System.out.println(myArr[1]);
 
-            // int[] myArr = new int[7];
-            //     System.out.println(Arrays.toString(myArr));
+            int[] myArr = new int[7];
+                System.out.println(Arrays.toString(myArr));
             
-            // double[] myArr02 = new double[7];
-            //     System.out.println(Arrays.toString(myArr02));
+            double[] myArr02 = new double[7];
+                System.out.println(Arrays.toString(myArr02));
                 
-            // String[] myArr03 = new String[7];
-            //     System.out.println(Arrays.toString(myArr03));
+            String[] myArr03 = new String[7];
+                System.out.println(Arrays.toString(myArr03));
                 
-            // boolean[] myArr04 = new boolean[7];
-            //     System.out.println(Arrays.toString(myArr04));    
+            boolean[] myArr04 = new boolean[7];
+                System.out.println(Arrays.toString(myArr04));    
 
             // Duyệt mảng (gồm 2 cách)    
             // int[] myArr = {1, 2, 3, 4, 5};
